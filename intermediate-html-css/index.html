@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class = "side-bar">
-        <div class = logo>
+        <div class = "logo">
             <img src = "assets/odin-lined.png" alt = "image not available" width = "50px">
             <h1>ODIN</h1>
         </div>
@@ -17,36 +17,36 @@
     
     
     
-    <div>
+    <div class = "form-page">
         <p>This is not real online service! You know you need something like this in your life to help you realize your deepest dreams.Sign up now to get started.</p>
         <p>You know you want to.</p>
-        <p>Let's do this!</p>
-        <form class = "sign-up">
-            <div>
+        <form class = "sign-up-form" id = "signup-form">
+            <p>Let's do this!</p>
+            <div class = "form-row">
                 <label for = "first-name">FIRST NAME</label>
                 <input id = "first-name" type = "text" name = "first-name" required>
                 <label for = "last-name">LAST NAME</label>
                 <input id = "last-name" type = "text" name = "last-name" required>
             </div>
-            <div>
+            <div class = "form-row">
                 <label for = "email">EMAIL</label>
                 <input id = "email" type = "email" name = "email" required>
                 <label for = "tel-no">PHONE NUMBER</label> 
                 <input id = "tel-no" type = "tel" name = "tel" required> 
             </div>
-            <div>
+            <div class = "form-row">
                 <label for = "password">PASSWORD</label>
                 <input id = "password" type = "password" name = "password" required>
                 <label for = "cfm-password">CONFIRM PASSWORD</label>
                 <input id = "cfm-password" type = "password" name = "cfm-password" required>
             </div>
-            <div>
-                <button>Create Account</button>
-            </div>
-            <div>
-                <p>Already have an account?<span> Log in</span></p>
-            </div>
         </form>
+        <div>
+            <button type = "submit" form = "signup-form">Create Account</button>
+        </div>
+        <div class = "log-in">
+            <p>Already have an account?<span> Log in</span></p>
+        </div>
     </div>
 </body>
 </html>
