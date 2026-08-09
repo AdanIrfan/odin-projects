@@ -8,6 +8,7 @@
     --color-black: rgb(0, 0, 0);
     --color-blue: #dbeafe;
     --color-white: rgb(255, 255, 255);
+    --color-gray: #e2e8f0;
 }
 
 *{
@@ -20,6 +21,7 @@
 .container{
     display: grid;
     grid-template-columns: 1fr 5fr;
+    background-color: var(--color-gray);
 }
 
 
@@ -47,13 +49,15 @@
     padding: 20px;
 }
 
-
-
-.sidebar > a > span{
-    padding: 30px;
-    font-size: 22px;
+.logo a{
+    display: grid;
+    grid-template-columns: 50px 100px;
     font-weight: bold;
+    padding-top: 32px;
+    font-size: 22px;
+    align-items: center;
 }
+
 
 /* header section */
 .header{
@@ -84,7 +88,7 @@
     border: none;
     border-radius: 20px;
     
-    background-color: #e2e8f0;
+    background-color: var(--color-gray);
     font-size: 16px;
     outline: none;
 }
@@ -108,8 +112,9 @@
     font-weight: 600;
 }
 
-.sidebar > a > img,
-.user-info > img{
+.logo img,
+.user-info > img,
+.trending-profile img{
     width: 50px;
 }
 
@@ -120,7 +125,7 @@
 }
 
 .action{
-    gap: 20px;
+    gap: 30px;
 }
 
 .action button{
@@ -129,11 +134,72 @@
     font-size: 14px;
     background-color: var(--color-blue);
     color: var(--color-black);
-    width: 90px;
+    width: 110px;
     height: 40px;
     border: none;
     outline: none;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgb(0, 0, 0, 0.5);
     cursor: pointer;
+}
+
+/* main content */
+.main-content{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: 16px;
+}
+
+.card{
+    background-color: var(--color-white);
+    border:none;   
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgb(0, 0, 0, 0.5);    
+    margin: 6px;
+    padding: 24px;
+    display: grid;
+    gap: 20px;
+}
+
+.projects{
+    grid-row: 1/3;
+    margin: 16px;
+}
+
+.trending{
+    grid-column: 2/3;
+    margin: 16px;
+}
+
+.projects-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
+    gap: 20px;
+}
+
+.card h4{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card p{
+    color: grey;
+    font-weight: 400;
+}
+
+.announcements{
+    margin: 16px;
+}
+
+.card a{
+    display: grid;
+    grid-template-columns: 25px 25px 25px;
+    align-items: end;
+    justify-content: end;
+    gap: 10px;
+}
+
+.trending-profile{
+    display: grid;
+    grid-template-columns: 60px 150px;
 }
