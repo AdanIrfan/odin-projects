@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>library</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class = "header">
+        <h1>Library Management Dashboard</h1>
+    </header>
+    <main class = "content">
+        <h2>Books Cover</h2>
+        <button type ="button">Add Book</button>
+        <dialog id = "dialog">
+            <form method = "dialog">
+                <label for = "title">Book Title:</label>
+                <input id = "title" type = "text" name = "title">
+                <label for = "author">Author Name:</label>
+                <input id = "author" type = "text" name = "author">
+                <label for = "pages">Book Pages:</label>
+                <input id = "pages" type = "number" name = "pages">
+                <fieldset>
+                    <legend>Read or Not(Yes/No)</legend>
+                    <input id = "read-yes" type = "radio" name = "read" value = "yes">
+                    <label for = "read-yes" >Yes</label>
+                    <input id = "read-no" type = "radio" name = "read" value = "no">
+                    <label for = "read-no" >NO</label>
+                </fieldset>
+                <button type = "button" id = "submit">Submit</button>
+                <button type = "button" id = "close">Cancel</button>
+            </form>
+        </dialog>
+        <div class = "container"></div>
+    </main>
+</body>
+</html>
