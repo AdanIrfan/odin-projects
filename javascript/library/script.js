@@ -1,17 +1,16 @@
 const mylibrary = [];
 
-function Book(name, author, pages, read){
-    if(!new.target){
-        throw Error(`write the new operator to use the constructor`)
+class Book {
+    constructor(name, author, pages, read){
+        this.id = crypto.randomUUID();
+        this.name = name,
+        this.author = author,
+        this.pages = pages,
+        this.read = read
     }
-    this.id = crypto.randomUUID();
-    this.name = name,
-    this.author = author,
-    this.pages = pages,
-    this.read = read
-}
 
-Book.prototype.toggleRead = function(){
+
+    toggleRead(){
     if(this.read === true){
         this.read = false;
         displayBook();
@@ -19,6 +18,7 @@ Book.prototype.toggleRead = function(){
     else{
         this.read = true;
         displayBook();
+    }
     }
 }
 
