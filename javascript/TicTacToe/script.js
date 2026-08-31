@@ -1,28 +1,25 @@
 // function createBoard(){
 //     let board = [];
 
-//     for(let i = 0; i < 3; i++){
+//     for (let i = 0 ; i < 3; i++){
 //         board[i] = [];
-//         for(let j = 0; j < 3; j++){
+//         for (let j = 0; j < 3; j++){
 //             board[i][j] = "-";
 //         }
 //     }
 
-//     const displayBoard = () => board;
+//     const displayBoard = ()=> board;
 
-//     const dropToken = (row, column, marker) =>{
-//         if (board[row][column] === "-"){
+//     const dropToken = (row, column , marker) => {
+//         if(board[row][column] === "-"){
 //             board[row][column] = marker;
-//             return board;
+//             return true;
 //         }
-//         else{
-//             return;
-//         }
+//         return false;
 //     }
-    
-//     return {displayBoard, dropToken, };
-// }
 
+//     return {displayBoard, dropToken};
+// }
 
 // const checkWin = (function(){
 //     const winStatus = (gameBoard ,marker) =>{
@@ -68,157 +65,211 @@
 //     return {winStatus};
 // })();
 
-// const playRound = function(players){
-//     let activePlayer = players[0];
 
-//     const getActivePlayer = ()=> activePlayer;
-//     const switchActivePlayer = () =>{
-//         activePlayer = (activePlayer === players[0])? players[1]: players[0];
-//     }
-
-//     const isBoardFull = (Board) => {
-//         const hasEmptyCell = Board.some(row =>
-//             row.some(column => column === "-")
-//         );
-        
-//         return !hasEmptyCell;
-//     };
-
+// const playRound = (player){
+//     let activePlayer;
 //     let board;
-//     const startRound = () =>{
-//         activePlayer = players[0];
-//         let roundWon = false;
-//         board = createBoard();
-//         while(roundWon === false){
-//             board.displayBoard();
-//             console.log(`${activePlayer.name} turn to place marker`);
-//             let row = Number(prompt("Enter the row number:"));
-//             let column = Number(prompt("Enter the column number:"));
-//             let newBoard = board.dropToken(row, column, activePlayer.marker);
-//             if(newBoard === undefined){
-//                 console.log(`Move rejected marker already exist`);
-//                 continue;
-//             }
-//             board.displayBoard();
-//             roundWon = checkWin.winStatus(board, activePlayer.marker);
-//             if(roundWon === true){
-//                 console.log(`${activePlayer.name} has won the round`);
-//                 activePlayer.score ++;
-//                 console.log(`${activePlayer.name} score:${activePlayer.score}`);
-//                 return;
-//             }
-//             let tieStatus = isBoardFull(board.displayBoard());
+//     const getActivePlayer = ()=> activePlayer;
 
-//             if (tieStatus === true) {
-//             console.log(`Tied Round`);
-//             console.log(`Better Luck Next Time`);
-//             return;
-//         }
-//             switchActivePlayer();
-//         }
+//     const switchActivePlayer = ()=>{
+//         activePlayer = activePlayer === player[0]? player[1]: player[0];
 //     }
 
 //     const getBoard = ()=> board;
 
-//     return {getActivePlayer, switchActivePlayer, startRound, getBoard};
+//     const startRound = ()=>{
+//         activePlayer = player[0];
+//         board = createBoard();
+//     }
+
+//     const isBoardFull = () =>{
+//         const currentBoard = board.displayBoard();
+//         let hasEmptyCell = currentBoard.some((row) =>{
+//             return row.some((column) =>{
+//                 return column === "-";
+//             })
+//         })
+//         return !hasEmptyCell;
+//     }
+
+//     const nextMove = (row, column) =>{
+//         const successfulMove = board.dropToken(row, column, activePlayer.marker);
+
+//         if (!successfulMove){
+//             return "invalid";
+//         }
+
+//         if(checkWin.winStatus(board, activePlayer.marker)){
+//             return "win"
+//         }
+
+//         if(isBoardFull()){
+//             return "tie";
+//         }
+
+//         switchActivePlayer();
+//         return 'continue';
+//     }
+
+//     return {getBoard, getActivePlayer, startRound, nextMove };
 // }
 
-
-// const gameController = (function(player1 = "player1", player2 = "player2"){
-//     let random = Math.floor(Math.random() * 2);
+// const gameController = (function(player1 = "player1", player2 ="player2"){
 //     let marker1;
 //     let marker2;
-//     if(random === 1){
-//         marker1 = "O";
-//         marker2 = "X";
-//     }
-//     else{
+//     let random = Math.floor(Math.random() * 2);
+//     if(random == 0){
 //         marker1 = "X";
 //         marker2 = "O";
 //     }
-    
-//     let players = [
-//         {
-//             name:player1,
-//             marker: marker1,
-//             score: 0
-//         },
-//         {
-//             name:player2,
-//             marker: marker2,
-//             score: 0
-//         }
-//     ];
-
-//     const round = playRound(players);
-//     const startGame = ()=>{
-//         for(let i = 0; i < 3; i++){
-//             round.startRound();
-//         }
-//         if(players[0].score > players[1].score){
-//             console.log(`${players[0].name} has won the game`);
-//         }
-//         else if (players[0].score < players[1].score){
-//             console.log(`${players[1].name} has won the game`);
-//         }
-//         else{
-//             console.log(`Game is tied`);
-//         }
-//         gameRestart();
+//     else{
+//         marker1 = "O";
+//         marker2 = "X";
 //     }
+//     const players = [{
+//         player: player1,
+//         score: 0,
+//         marker: marker1
+//     },
+//     {
+//         player: player2,
+//         score: 0,
+//         marker: marker2
+//     }];
 
-//     const gameRestart = () => {
-//     let restart = prompt("Do you want to play again? (yes/no)");
+//     let currentRound = 0;
+//     const totalRound = 3;
 
-//     if (restart.toLowerCase() === "yes") {
+//     const getCurrentRound =()=> currentRound;
+
+//     const getRound = ()=> round;
+
+//     const startGame =()=>{
+//         currentRound = 0;
 //         players[0].score = 0;
 //         players[1].score = 0;
-//         startGame();
-//     }
-//     else{
-//         console("Thanks for playing");
-//     }
-// };
 
-//     return {players, startGame};
+//         startNextRound();
+//     }
+
+//     const round = playRound(players);
+
+//     let startNextRound =()=>{
+//         if(currentRound >= totalRound){
+//             endGame();
+//             return;
+//         }
+
+//         currentRound++;
+//         console.log(`CurrentRound is : ${currentRound}/3`);
+//         round.startRound();
+//     }
+
+//     const endGame = ()=>{
+//         if(players[0].score > players[1].score){
+//             console.log(`${players[0].player} has Won the game`);
+//         }
+//         else if(players[1].score > players[0].score){
+//             console.log(`${players[1].player} has won the game`);
+//         }
+//         else{
+//             console.log("Tied Game");
+//         }
+//     }
+
+//     const restartGame = ()=>{
+//         players[0].score = 0;
+//         players[1].score = 0;
+//         currentRound = 0;
+
+//         startNextRound();
+//     }
+
+//     return {players, getRound, getCurrentRound , startGame, endGame, restartGame, startNextRound};
+// })();
+
+// const displayController = (function(){
+//     const  turnDiv = document.querySelector(".turn");
+//     const roundDiv = document.querySelector(".round");
+//     const scoreDiv = document.querySelector(".score");
+//     const boardDiv = document.querySelector(".board");
+//     const startBtn = document.querySelector(".start");
+//     const restartBtn = document.querySelector(".restartBtn");
+
+//     const round = gameController.getRound();
+
+//     function UpdateScreen(){
+//         let activePlayer = round.getActivePlayer();
+//         let board = round.getBoard().displayBoard();
+
+//         boardDiv.textContent = "";
+
+//         turnDiv.textContent = `${activePlayer.name} turn's`;
+
+//         roundDiv.textContent = `Round ${gameController.getCurrentRound()}/3`;
+
+//         scoreDiv.textContent = `${gameController.players[0].player} score's : ${gameController.player[0].score} /
+//         ${gameController.players[1].player} score's : ${gameController.players[1].score}`
+
+
+//         board.forEach((row , rowIndex) => {
+//             row.forEach((cell, columnIndex) =>{
+//                 const btn = document.createElement("button");
+//                 btn.classList.add("cell");
+//                 btn.dataset.row = rowIndex;
+//                 btn.dataset.column = columnIndex;
+                
+//                 if(cell !== "-"){
+//                     btn.textContent = cell;
+//                 }
+
+//                 btn.addEventListener("click", handleCellClick);
+                
+//                 boardDiv.appendChild(btn);
+//             })
+//         });
+//     }
+        
+
+//         function handleCellClick(e){
+//             let row = Number(e.target.dataset.row);
+//             let column = Number(e.target.dataset.column);
+
+//             const result = round.nextMove(row, column);
+//             if (result === "invalid"){
+//                 console.log(`Cell is already occupied`);
+//                 return;
+//             }
+//             if(result === "win"){
+//                 turnDiv.textContent = `${activePlayer.player} has won the Round`;
+//                 setTimeout(() =>{
+//                     UpdateScreen()
+//                     gameController.startNextRound();
+//                 }, 1000)
+//             }
+
+//             if(result === "tie"){
+//                 turnDiv.textContent = `Round is Tied`
+//                 setTimeout(() =>{
+//                     UpdateScreen()
+//                     gameController.startNextRound();
+//                 }, 1000)
+//             }
+//         }
+
+//         startBtn.addEventListener("click", ()=>{
+//             gameController.startGame();
+//             UpdateScreen();
+//         })
+
+//         restartBtn.addEventListener("click", ()=>{
+//             gameController.restartGame();
+//             UpdateScreen();
+//         })
+
 // })();
 
 
-// function displayController(){
-//     const boardDiv = document.querySelector(".board");
-//     const playerTurnDiv = document.querySelector(".turn");
-
-//     const updateScreen = ()=>{
-//         playerTurnDiv.textContent = " "; 
-        
-//         const activePlayer = gameController.getActivePlayer();
-//         const board = gameController.getBoard();
-
-//         playerTurnDiv.textContent = `${activePlayer}'s turn`;
-
-//         board.forEach((row) =>{
-//             row.forEach((column, index) => {
-//                 const btn = document.createElement("button");
-//                 btn.classList.add("cell");
-//                 btn.dataset.row.column = index;
-//                 btn.textContent = activePlayer.getValue();
-//                 boardDiv.appendChild(btn);
-//                 btn.addEventListener("click", ()=> clickHandlerBoard(btn));
-//             });
-//         });
-//     }
-//     const clickHandlerBoard = (e)=>{
-//         let selectedCell = e.target.dataset.column;
-
-//         if(!selectedCell) return;
-
-        
-//         gameController.startGame();
-//         updateScreen();
-//     }
-// }
-
-// displayController();
 
 function createBoard() {
     let board = [];
