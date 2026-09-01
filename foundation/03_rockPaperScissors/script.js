@@ -20,53 +20,55 @@ let computerScore = 0;
 let round = 0;
 
 function playRound(humanChoice){
-    computerChoice = getComputerChoice();
+    let computerChoice = getComputerChoice();
     let roundResult = document.querySelector(".roundResult");
-    if (humanChoice.toLowerCase() == computerChoice){
+    let humanPick = humanChoice.toLowerCase();
+    if (humanPick == computerChoice){
         roundResult.textContent = "Oops! It's a tie";
     }
-    else if (humanChoice.toLowerCase() == "rock" && computerChoice == "paper"){
+    else if (humanPick == "rock" && computerChoice == "paper"){
         roundResult.textContent = "You lose! Paper beats Rock";
         computerScore++;
     }
-    else if (humanChoice.toLowerCase() == "rock" && computerChoice == "scissors"){
+    else if (humanPick == "rock" && computerChoice == "scissors"){
         roundResult.textContent = "You Won! Rock beats Scissors";
         humanScore++;
     }
-    else if (humanChoice.toLowerCase() == "paper" && computerChoice == "rock"){
+    else if (humanPick == "paper" && computerChoice == "rock"){
         roundResult.textContent = "You Won! Paper beats Rock";
         humanScore++;
     }
-    else if (humanChoice.toLowerCase() == "paper" && computerChoice == "scissors"){
+    else if (humanPick == "paper" && computerChoice == "scissors"){
         roundResult.textContent = "You lose! Scissors beats Papers";
         computerScore++;
     }
-    else if (humanChoice.toLowerCase() == "scissors" && computerChoice == "rock"){
+    else if (humanPick == "scissors" && computerChoice == "rock"){
         roundResult.textContent = "You lose! Rocks beats Scissors";
         computerScore++;
     }
-    else if (humanChoice.toLowerCase() == "scissors" && computerChoice == "paper"){
+    else if (humanPick == "scissors" && computerChoice == "paper"){
         roundResult.textContent = "You Won! Scissors beats Paper";
         humanScore++;
     }
     
     round++;
-    if (round == 5){
+    if (round === 5){
         showWinner();
+        return;
     }
 }  
 
 function showWinner(){
-    let roundResult = document.querySelector(".roundResult");
+    let gameResult = document.querySelector(".gameResult");
 
     if (humanScore > computerScore) {
-        roundResult.textContent = `🎉 You Won! ${humanScore} vs ${computerScore}`;
+        gameResult.textContent = `🎉 You Won! ${humanScore} vs ${computerScore}`;
     } 
     else if (humanScore < computerScore) {
-        roundResult.textContent = `😢 You Lost! ${computerScore} vs ${humanScore}`;
+        gameResult.textContent = `😢 You Lost! ${computerScore} vs ${humanScore}`;
     } 
     else {
-        roundResult.textContent = `😐 Tie Game! ${humanScore} vs ${computerScore}`;
+        gameResult.textContent = `😐 Tie Game! ${humanScore} vs ${computerScore}`;
     }
 }
 
