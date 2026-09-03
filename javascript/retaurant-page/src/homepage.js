@@ -17,7 +17,7 @@ export default function homePageStructure(){
     img.alt = "chef restaurant";
     img.style.width = `15rem`;
     img.style.alignSelf = "center";
-    img.style.marginTop = "2em"
+    img.style.marginTop = "4em"
     titleDiv.appendChild(img);
 
     const heading = document.createElement("h1");
@@ -25,7 +25,7 @@ export default function homePageStructure(){
     heading.style.borderBottom = `1px solid white`;
     // heading.style.borderRadius = `50px`;
     // heading.style.padding = `5em`;
-    heading.style.margin = `0.5em 9em`;
+    heading.style.margin = `1em 9em`;
     container.style.display = `flow-root`;
     heading.style.textAlign = `center`;
     titleDiv.appendChild(heading);
@@ -35,14 +35,15 @@ export default function homePageStructure(){
     infoDiv.style.display = `flex`;
     infoDiv.style.flexDirection = "column";
     infoDiv.style.gap = "2em";
-    infoDiv.style.margin = `1.5em 2em`;
+    infoDiv.style.margin = `1em 4em`;
     infoDiv.style.textAlign = `center`;
     container.appendChild(infoDiv);
     
     const taglineDiv = document.createElement("div");
-    taglineDiv.style.border = `12px solid black`;
-    taglineDiv.style.borderRadius = `50px`;
-    taglineDiv.style.padding = `0.5em`;
+    taglineDiv.style.border = `1px solid black`;
+    taglineDiv.style.boxShadow = "5px 5px 8px 8px black";
+    taglineDiv.style.borderRadius = `10px`;
+    taglineDiv.style.padding = `2em`;
     taglineDiv.classList.add("taglineDiv");
     infoDiv.appendChild(taglineDiv);
 
@@ -57,8 +58,9 @@ export default function homePageStructure(){
     writtenBy.style.paddingLeft = "1em"
     
     const hoursDiv = document.createElement("div");
-    hoursDiv.style.border = `12px solid black`;
-    hoursDiv.style.borderRadius = `50px`;
+    hoursDiv.style.border = `1px solid black`;
+    hoursDiv.style.boxShadow = "5px 5px 8px 8px black";
+    hoursDiv.style.borderRadius = `10px`;
     hoursDiv.style.padding = `0.5em`;
     hoursDiv.style.margin = "0px 12rem"
     hoursDiv.classList.add("hoursDiv");
@@ -104,10 +106,11 @@ export default function homePageStructure(){
     
     
     const locationDiv = document.createElement("div");
-    locationDiv.style.border = `12px solid black`;
-    locationDiv.style.borderRadius = `50px`;
+    locationDiv.style.border = `1px solid black`;
+    locationDiv.style.boxShadow = "5px 5px 8px 8px black";
+    locationDiv.style.borderRadius = `10px`;
     locationDiv.style.padding = `0.5em`;
-    locationDiv.style.marginBottom = "2rem"
+    locationDiv.style.marginBottom = "10em"
     locationDiv.classList.add("locationDiv");
     infoDiv.appendChild(locationDiv);
 
@@ -115,7 +118,7 @@ export default function homePageStructure(){
     locationHeading.textContent = `Location`;
     locationHeading.style.textAlign = "start";
     locationHeading.style.paddingLeft = "1em"
-    locationDiv.style.margin = "0px 8rem"
+    locationDiv.style.margin = "0px 2rem"
     locationDiv.appendChild(locationHeading);
 
     const locationParagraph = document.createElement("p");

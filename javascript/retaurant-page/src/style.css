@@ -68,7 +68,9 @@ footer a{
     width: 80%;
     max-width: 500px;
     margin: 2em auto;
-    border: 8px solid rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    box-shadow:5px 5px 8px 8px rgb(0, 0, 0);
     padding: 2em;
 }
 
@@ -103,5 +105,33 @@ footer a{
     height: 200px;
     width: 150px;
     align-self: flex-end;
+}
+
+/* contact.js css */
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin: 1.5em 12em;
+    text-align: center;
+}
+
+.contact h1 {
+    border: 12px solid rgb(83, 72, 72);
+    margin: 0.5em 4em;
+    padding: 0.5em;
+}
+
+.contactCard {
+    border: 1px solid black;
+    box-shadow: 5px 5px 8px 8px rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.contactCard h2 {
+    text-align: start;
+    padding-left: 1em;
 }
 
