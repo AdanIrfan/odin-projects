@@ -2,7 +2,7 @@ import "./style.css";
 import homePageStructure from "./homepage.js";
 import menuPageStructure from "./menu.js";
 import aboutPageStructure from "./contact.js";
-import restaurantBackgroundImg from "./assets/bground.jpg";
+// import restaurantBackgroundImg from "./assets/bground.jpg";
 
 
 const homePageBtn = document.getElementById("home");
@@ -14,6 +14,6 @@ homePageBtn.addEventListener("click", ()=> homePageStructure());
 menuPageBtn.addEventListener("click", ()=> menuPageStructure());
 aboutPageBtn.addEventListener("click", ()=> aboutPageStructure());
 
-document.body.style.backgroundImage = `url("${restaurantBackgroundImg}")`;
+// document.body.style.backgroundImage = `url("${restaurantBackgroundImg}")`;
 
 homePageStructure();

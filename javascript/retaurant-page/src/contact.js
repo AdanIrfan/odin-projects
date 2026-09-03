@@ -17,6 +17,7 @@ export default function contactPageStructure() {
     heading.textContent = "Contact Us";
     heading.style.borderBottom = "1px solid white";
     heading.style.margin = "0.5em 9em";
+    heading.style.padding = ".5em";
     heading.style.textAlign = "center";
     contactDiv.appendChild(heading);
 
