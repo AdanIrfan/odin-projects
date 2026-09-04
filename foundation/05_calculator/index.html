@@ -75,24 +75,24 @@
             }
         }
 
-        function update(){
-            const buttons = Array.from(document.querySelectorAll("button"));  
+        function update() {
+            const buttons = Array.from(document.querySelectorAll("button"));
             buttons.forEach(btn => {
-                btn.addEventListener("click", (e) =>{
+                btn.addEventListener("click", (e) => {
                     const value = e.target.textContent
-                    if((!isNaN(Number(value)) || value === ".") && operator === ""){
-                        if(value == "." && firstNumber.includes(".")) return;
+                    if ((!isNaN(Number(value)) || value === ".") && operator === "") {
+                        if (value == "." && firstNumber.includes(".")) return;
                         firstNumber += value;
                         const display = document.querySelector("#calc-display");
                         display.value = firstNumber;
                     }
-                    else if((isNaN(Number(value))) && (value === "+" || value === "-" || value === "*" || value === "/") ){
+                    else if ((isNaN(Number(value))) && (value === "+" || value === "-" || value === "*" || value === "/")) {
                         operator = value;
                         const display = document.querySelector("#calc-display");
                         display.value = firstNumber + operator;
                     }
-                    else if ((!isNaN(Number(value)) || value == ".") && operator != "" ){
-                        if(value == "." && secondNumber.includes(".")) return;
+                    else if ((!isNaN(Number(value)) || value == ".") && operator != "") {
+                        if (value == "." && secondNumber.includes(".")) return;
                         secondNumber += value;
                         const display = document.querySelector("#calc-display");
                         display.value = firstNumber + operator + secondNumber;
@@ -101,26 +101,24 @@
             });
         }
         const equal = document.querySelector(".btn-equal");
-        equal.addEventListener("click", (e) =>{
-            if (!firstNumber || !secondNumber || !operator) return; 
-            const result = operate(operator, Number(firstNumber),Number(secondNumber))
+        equal.addEventListener("click", (e) => {
+            if (!firstNumber || !secondNumber || !operator) return;
+            const result = operate(operator, Number(firstNumber), Number(secondNumber))
             const display = document.querySelector("#calc-display");
             display.value = result;
         });
 
 
         const clear = document.querySelector(".btn-clear");
-        clear.addEventListener('click', ()=>{
+        clear.addEventListener('click', () => {
             firstNumber = "";
             secondNumber = "";
             operator = "";
             const display = document.querySelector("#calc-display");
             display.value = "";
         });
-        
+
         update();
-
-
 
     </script>
 </body>
