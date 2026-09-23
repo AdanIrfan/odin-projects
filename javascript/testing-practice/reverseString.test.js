@@ -21,6 +21,7 @@ test("check for spaces", () => {
 test("string containing punctuation mark", () => {
   expect(reverseString("Hello!")).toBe("!olleH");
 });
+
 test("palindrom check", () => {
   expect(reverseString("madam")).toBe("madam");
 });
